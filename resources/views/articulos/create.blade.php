@@ -7,11 +7,11 @@
         <div class="panel-heading clearfix">
             
             <span class="pull-left">
-                <h4 class="mt-5 mb-5">Create New Articulos</h4>
+                <h4 class="mt-5 mb-5">Create New Articulo</h4>
             </span>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="{{ route('articulos.articulos.index') }}" class="btn btn-primary" title="Show All Articulos">
+                <a href="{{ route('articulos.articulo.index') }}" class="btn btn-primary" title="Show All Articulo">
                     <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                 </a>
             </div>
@@ -28,10 +28,10 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('articulos.articulos.store') }}" accept-charset="UTF-8" id="create_articulos_form" name="create_articulos_form" class="form-horizontal">
+            <form method="POST" action="{{ route('articulos.articulo.store') }}" accept-charset="UTF-8" id="create_articulo_form" name="create_articulo_form" class="form-horizontal">
             {{ csrf_field() }}
             @include ('articulos.form', [
-                                        'articulos' => null,
+                                        'articulo' => null,
                                       ])
 
                 <div class="form-group">

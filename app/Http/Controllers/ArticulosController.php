@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Articulos;
+use App\Models\Articulo;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Exception;
@@ -18,13 +18,13 @@ class ArticulosController extends Controller
      */
     public function index()
     {
-        $articulosObjects = Articulos::with('categoria')->paginate(25);
+        $articulos = Articulo::with('categoria')->paginate(25);
 
-        return view('articulos.index', compact('articulosObjects'));
+        return view('articulos.index', compact('articulos'));
     }
 
     /**
-     * Show the form for creating a new articulos.
+     * Show the form for creating a new articulo.
      *
      * @return Illuminate\View\View
      */
@@ -36,7 +36,7 @@ class ArticulosController extends Controller
     }
 
     /**
-     * Store a new articulos in the storage.
+     * Store a new articulo in the storage.
      *
      * @param Illuminate\Http\Request $request
      *
@@ -48,10 +48,10 @@ class ArticulosController extends Controller
             
             $data = $this->getData($request);
             
-            Articulos::create($data);
+            Articulo::create($data);
 
-            return redirect()->route('articulos.articulos.index')
-                ->with('success_message', 'Articulos was successfully added.');
+            return redirect()->route('articulos.articulo.index')
+                ->with('success_message', 'Articulo was successfully added.');
         } catch (Exception $exception) {
 
             return back()->withInput()
@@ -60,7 +60,7 @@ class ArticulosController extends Controller
     }
 
     /**
-     * Display the specified articulos.
+     * Display the specified articulo.
      *
      * @param int $id
      *
@@ -68,13 +68,13 @@ class ArticulosController extends Controller
      */
     public function show($id)
     {
-        $articulos = Articulos::with('categoria')->findOrFail($id);
+        $articulo = Articulo::with('categoria')->findOrFail($id);
 
-        return view('articulos.show', compact('articulos'));
+        return view('articulos.show', compact('articulo'));
     }
 
     /**
-     * Show the form for editing the specified articulos.
+     * Show the form for editing the specified articulo.
      *
      * @param int $id
      *
@@ -82,14 +82,14 @@ class ArticulosController extends Controller
      */
     public function edit($id)
     {
-        $articulos = Articulos::findOrFail($id);
+        $articulo = Articulo::findOrFail($id);
         $categorias = Categoria::pluck('nombre','id')->all();
 
-        return view('articulos.edit', compact('articulos','categorias'));
+        return view('articulos.edit', compact('articulo','categorias'));
     }
 
     /**
-     * Update the specified articulos in the storage.
+     * Update the specified articulo in the storage.
      *
      * @param int $id
      * @param Illuminate\Http\Request $request
@@ -102,11 +102,11 @@ class ArticulosController extends Controller
             
             $data = $this->getData($request);
             
-            $articulos = Articulos::findOrFail($id);
-            $articulos->update($data);
+            $articulo = Articulo::findOrFail($id);
+            $articulo->update($data);
 
-            return redirect()->route('articulos.articulos.index')
-                ->with('success_message', 'Articulos was successfully updated.');
+            return redirect()->route('articulos.articulo.index')
+                ->with('success_message', 'Articulo was successfully updated.');
         } catch (Exception $exception) {
 
             return back()->withInput()
@@ -115,7 +115,7 @@ class ArticulosController extends Controller
     }
 
     /**
-     * Remove the specified articulos from the storage.
+     * Remove the specified articulo from the storage.
      *
      * @param int $id
      *
@@ -124,11 +124,11 @@ class ArticulosController extends Controller
     public function destroy($id)
     {
         try {
-            $articulos = Articulos::findOrFail($id);
-            $articulos->delete();
+            $articulo = Articulo::findOrFail($id);
+            $articulo->delete();
 
-            return redirect()->route('articulos.articulos.index')
-                ->with('success_message', 'Articulos was successfully deleted.');
+            return redirect()->route('articulos.articulo.index')
+                ->with('success_message', 'Articulo was successfully deleted.');
         } catch (Exception $exception) {
 
             return back()->withInput()

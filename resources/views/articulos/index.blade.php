@@ -23,14 +23,14 @@
             </div>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="{{ route('articulos.articulos.create') }}" class="btn btn-success" title="Create New Articulos">
+                <a href="{{ route('articulos.articulo.create') }}" class="btn btn-success" title="Create New Articulo">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </a>
             </div>
 
         </div>
         
-        @if(count($articulosObjects) == 0)
+        @if(count($articulos) == 0)
             <div class="panel-body text-center">
                 <h4>No Articulos Available.</h4>
             </div>
@@ -50,28 +50,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($articulosObjects as $articulos)
+                    @foreach($articulos as $articulo)
                         <tr>
-                            <td>{{ $articulos->descripcion }}</td>
-                            <td>{{ $articulos->precio }}</td>
-                            <td>{{ $articulos->costo }}</td>
-                            <td>{{ optional($articulos->categoria)->nombre }}</td>
+                            <td>{{ $articulo->descripcion }}</td>
+                            <td>{{ $articulo->precio }}</td>
+                            <td>{{ $articulo->costo }}</td>
+                            <td>{{ optional($articulo->categoria)->nombre }}</td>
 
                             <td>
 
-                                <form method="POST" action="{!! route('articulos.articulos.destroy', $articulos->id) !!}" accept-charset="UTF-8">
+                                <form method="POST" action="{!! route('articulos.articulo.destroy', $articulo->id) !!}" accept-charset="UTF-8">
                                 <input name="_method" value="DELETE" type="hidden">
                                 {{ csrf_field() }}
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
-                                        <a href="{{ route('articulos.articulos.show', $articulos->id ) }}" class="btn btn-info" title="Show Articulos">
+                                        <a href="{{ route('articulos.articulo.show', $articulo->id ) }}" class="btn btn-info" title="Show Articulo">
                                             <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
                                         </a>
-                                        <a href="{{ route('articulos.articulos.edit', $articulos->id ) }}" class="btn btn-primary" title="Edit Articulos">
+                                        <a href="{{ route('articulos.articulo.edit', $articulo->id ) }}" class="btn btn-primary" title="Edit Articulo">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </a>
 
-                                        <button type="submit" class="btn btn-danger" title="Delete Articulos" onclick="return confirm(&quot;Click Ok to delete Articulos.&quot;)">
+                                        <button type="submit" class="btn btn-danger" title="Delete Articulo" onclick="return confirm(&quot;Click Ok to delete Articulo.&quot;)">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </button>
                                     </div>
@@ -88,7 +88,7 @@
         </div>
 
         <div class="panel-footer">
-            {!! $articulosObjects->render() !!}
+            {!! $articulos->render() !!}
         </div>
         
         @endif
