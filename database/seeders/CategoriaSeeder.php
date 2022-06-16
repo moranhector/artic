@@ -27,8 +27,6 @@ class CategoriaSeeder extends Seeder
                 'nombre' => 'ELECTRONICA',
                 'created_at' => date("Y-m-d H:i:s")                
             ],            
-
-
         ];
         DB::table('categorias')->insert($data); 
     }

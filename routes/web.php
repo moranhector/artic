@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\ArticulosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +36,23 @@ Route::group([
          ->name('categorias.categoria.update')->where('id', '[0-9]+');
     Route::delete('/categoria/{categoria}',[CategoriasController::class, 'destroy'])
          ->name('categorias.categoria.destroy')->where('id', '[0-9]+');
+});
+
+Route::group([
+    'prefix' => 'articulos',
+], function () {
+    Route::get('/', [ArticulosController::class, 'index'])
+         ->name('articulos.articulos.index');
+    Route::get('/create', [ArticulosController::class, 'create'])
+         ->name('articulos.articulos.create');
+    Route::get('/show/{articulos}',[ArticulosController::class, 'show'])
+         ->name('articulos.articulos.show')->where('id', '[0-9]+');
+    Route::get('/{articulos}/edit',[ArticulosController::class, 'edit'])
+         ->name('articulos.articulos.edit')->where('id', '[0-9]+');
+    Route::post('/', [ArticulosController::class, 'store'])
+         ->name('articulos.articulos.store');
+    Route::put('articulos/{articulos}', [ArticulosController::class, 'update'])
+         ->name('articulos.articulos.update')->where('id', '[0-9]+');
+    Route::delete('/articulos/{articulos}',[ArticulosController::class, 'destroy'])
+         ->name('articulos.articulos.destroy')->where('id', '[0-9]+');
 });
