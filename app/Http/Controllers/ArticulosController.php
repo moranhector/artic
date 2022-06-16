@@ -30,7 +30,7 @@ class ArticulosController extends Controller
      */
     public function create()
     {
-        $categorias = Categoria::pluck('id','id')->all();
+        $categorias = Categoria::pluck('nombre','id')->all();
         
         return view('articulos.create', compact('categorias'));
     }
@@ -83,7 +83,7 @@ class ArticulosController extends Controller
     public function edit($id)
     {
         $articulos = Articulos::findOrFail($id);
-        $categorias = Categoria::pluck('id','id')->all();
+        $categorias = Categoria::pluck('nombre','id')->all();
 
         return view('articulos.edit', compact('articulos','categorias'));
     }

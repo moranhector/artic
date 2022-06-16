@@ -190,7 +190,7 @@
                     "App\\Models\\Categoria",
                     "categoria_id"
                 ],
-                "field": "id"
+                "field": "nombre"
             },
             "foreign-constraint": null,
             "on-store": null,

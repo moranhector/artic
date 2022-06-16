@@ -55,7 +55,7 @@
                             <td>{{ $articulos->descripcion }}</td>
                             <td>{{ $articulos->precio }}</td>
                             <td>{{ $articulos->costo }}</td>
-                            <td>{{ optional($articulos->categoria)->id }}</td>
+                            <td>{{ optional($articulos->categoria)->nombre }}</td>
 
                             <td>
 

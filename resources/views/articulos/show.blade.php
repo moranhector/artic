@@ -46,7 +46,7 @@
             <dt>Costo</dt>
             <dd>{{ $articulos->costo }}</dd>
             <dt>Categoria</dt>
-            <dd>{{ optional($articulos->categoria)->id }}</dd>
+            <dd>{{ optional($articulos->categoria)->nombre }}</dd>
 
         </dl>
 
